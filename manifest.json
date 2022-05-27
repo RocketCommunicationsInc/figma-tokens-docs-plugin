@@ -1,0 +1,10 @@
+{
+  "name": "Figma Tokens Documentation Generator",
+  "id": "1110991446255038479",
+  "api": "1.0.0",
+  "editorType": [
+    "figma"
+  ],
+  "main": "dist/code.js",
+  "ui": "dist/index.html"
+}
