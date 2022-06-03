@@ -1,7 +1,7 @@
 import { checkIfContainsAlias } from "./checkIfContainsAlias";
-import { hexToFigmaRGB } from "./convertColors";
+import { TokenSectionInput } from "./types";
 
-figma.showUI(__html__, { themeColors: true, height: 300, width: 500 });
+figma.showUI(__html__, { height: 900, width: 500 });
 async function loadFonts() {
   await figma.loadFontAsync({ family: "Roboto", style: "Bold" })
   await figma.loadFontAsync({ family: "Roboto", style: "Regular" })
@@ -212,35 +212,8 @@ class TokenItem {
 
 figma.ui.onmessage = async (msg) => {
   await loadFonts()
-  if (msg.type === "create-rectangles") {
+  if (msg.type === "create-docs") {
     const pluginData = JSON.parse(figma.root.getSharedPluginData("tokens", "values")).beta
-
-    const sections = {
-      'color.background': 'Background Colors',
-      'color.text': 'Text Colors',
-      'color.border': 'Border Colors',
-      'color.palette': 'Palette Colors',
-      'color.status': 'Status Colors',
-      'color.classification': 'Classification Colors',
-      // 'link': 'Link',
-      'popup-menu': 'Popup Menu',
-      'card': 'Card',
-      'container': 'Container',
-      'classification-banner': 'Classification Banner',
-      // 'dialog': 'Dialog',
-      'status-symbol': 'Status Symbol',
-      'gsb': 'Global Status Bar',
-      // 'slider': 'Slider',
-      // 'checkbox': 'Checkbox',
-      // 'radio': 'Radio',
-      // 'switch': 'Switch',
-      // 'scrollbar': 'Scrollbar',
-      // 'progress': 'Progress',
-      // 'tag': 'Tag',
-      // 'indeterminate-progress': 'Indeterminate Progress',
-      'notification-banner': 'Notification Banner',
-      // 'menu': 'Menu'
-    }
 
     const frame = figma.createFrame()
 
@@ -248,18 +221,16 @@ figma.ui.onmessage = async (msg) => {
     frame.layoutAlign = "INHERIT"
     frame.counterAxisSizingMode = "AUTO"
     frame.layoutMode = 'HORIZONTAL'
+    frame.itemSpacing = 24
 
-    let section: keyof typeof sections
-    for (section in sections) {
-      const tokens = pluginData.filter((token: Token) => token.name.startsWith(section))
-      const sectionName = sections[section]
-      const tokenSection = new TokenSection(sectionName, tokens)
-      tokenSection.create()
-
-      frame.appendChild(tokenSection.frame)
-    }
-
-
+    msg.sections.map((section: TokenSectionInput)  => {
+      const tokens = pluginData.filter((token: Token) => token.name.startsWith(section.tokenPrefix))
+      if (tokens.length > 0) {
+        const tokenSection = new TokenSection(section.name, tokens)
+        tokenSection.create()
+        frame.appendChild(tokenSection.frame)
+      }
+    })
 
     // const palettes = pluginData.beta.filter((token: Token) => token.name.includes('color.palette'))
     // const section = new TokenSection('Color Palettes', palettes)

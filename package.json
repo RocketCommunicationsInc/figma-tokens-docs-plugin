@@ -19,6 +19,7 @@
   "author": "Mark Anthony Cianfrani",
   "license": "MIT License",
   "dependencies": {
+    "figma-plugin-ds": "^1.0.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },

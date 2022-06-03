@@ -15,14 +15,11 @@
 }
 
 html,
-body,
-main {
+.container {
   height: 100%;
 }
 
-body,
-input,
-button {
+body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 1rem;
@@ -35,7 +32,7 @@ body {
   margin: 0;
 }
 
-button {
+/* button {
   border-radius: 0.25rem;
   background: var(--color-bg);
   color: var(--color-text);
@@ -60,9 +57,12 @@ button.brand {
   --color-bg-active: var(--color-bg-brand-active);
   --color-border: transparent;
   --color-border-focus: var(--color-border-brand-focus);
-}
+} */
 
-input {
+.input__field {
+  border: 1px solid var(--black3);
+}
+/* input {
   background: 1px solid var(--color-bg);
   border: 1px solid var(--color-border);
   color: 1px solid var(--color-text);
@@ -72,7 +72,7 @@ input {
 input:focus-visible {
   border-color: var(--color-border-focus);
   outline-color: var(--color-border-focus);
-}
+} */
 
 svg {
   stroke: var(--color-icon, rgba(0, 0, 0, 0.9));
@@ -104,6 +104,90 @@ img {
   width: 2rem;
 }
 
+form, ul {
+  margin: 0;
+  padding: 0;
+}
 .directions {
   text-align: left;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.new-section-input {
+  display: flex; 
+  align-items: end;
+  padding: 1rem;
+}
+
+.new-section-input .input {
+  width: 40%;
+}
+
+.new-section-input .label {
+  color: var(--black);
+  padding: 0;
+}
+
+.new-section-input .input:first-child {
+  margin-right: 1rem;
+}
+.new-section-input button {
+  margin-left: auto;
+}
+
+
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.section__actions {
+  margin-left: auto;
+}
+
+.tokenPrefix {
+  font-style: italic;
+  font-size: var(--font-size-small);
+  color: var(--black8);
+}
+.sectionName {
+  font-weight: bold;
+}
+.section-list {
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+main {
+  flex: 1;
+  overflow: auto;
+}
+
+footer {
+  padding: 1rem;
+}
+
+footer button {
+  margin: auto;
+}
+
+.section__name-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  text-align: left;
+}
+.button--deleteAll {
+  margin-left: auto;
+  padding-right: 1rem;
 }
