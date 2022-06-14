@@ -216,6 +216,7 @@ figma.ui.onmessage = async (msg) => {
     const pluginData = JSON.parse(figma.root.getSharedPluginData("tokens", "values")).beta
 
     const frame = figma.createFrame()
+    frame.name = "Color Design Tokens"
 
     // Horizontal resizing = "Hug Contents"
     frame.layoutAlign = "INHERIT"

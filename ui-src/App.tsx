@@ -26,8 +26,64 @@ function App(props) {
       tokenPrefix: 'color.border',
     },
     {
-      name: 'Palette Colors',
-      tokenPrefix: 'color.palette',
+      name: 'Neutral Colors',
+      tokenPrefix: 'color.palette.neutral',
+    },
+    {
+      name: 'Dark Blue Colors',
+      tokenPrefix: 'color.palette.darkblue',
+    },
+    {
+      name: 'Bright Blue Colors',
+      tokenPrefix: 'color.palette.brightblue',
+    },
+    {
+      name: 'Grey Colors',
+      tokenPrefix: 'color.palette.grey',
+    },
+    {
+      name: 'Red Colors',
+      tokenPrefix: 'color.palette.red',
+    },
+    {
+      name: 'Orange Colors',
+      tokenPrefix: 'color.palette.orange',
+    },
+    {
+      name: 'Yellow Colors',
+      tokenPrefix: 'color.palette.yellow',
+    },
+    {
+      name: 'Green Colors',
+      tokenPrefix: 'color.palette.green',
+    },
+    {
+      name: 'Cyan Colors',
+      tokenPrefix: 'color.palette.cyan',
+    },
+    {
+      name: 'Violet Colors',
+      tokenPrefix: 'color.palette.violet',
+    },
+    {
+      name: 'Blue Colors',
+      tokenPrefix: 'color.palette.blue',
+    },
+    {
+      name: 'Teal Colors',
+      tokenPrefix: 'color.palette.teal',
+    },
+    {
+      name: 'Purple Colors',
+      tokenPrefix: 'color.palette.purple',
+    },
+    {
+      name: 'Pink Colors', 
+      tokenPrefix: 'color.palette.pink',
+    },
+    {
+      name: 'Hot Orange Colors',
+      tokenPrefix: 'color.palette.hotorange',
     },
     {
       name: 'Status Colors',
