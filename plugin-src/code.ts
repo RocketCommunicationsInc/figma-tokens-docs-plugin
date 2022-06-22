@@ -9,16 +9,18 @@ async function loadFonts() {
 }
 
 enum layerNames {
+  'localComponents' = 'Local Components',
   'pageDesignTokens' = 'Design Tokens',
-  'templateDesignToken' = 'Design Token Template',
+  'templateDesignToken' = '_Design Token Template',
   'tokenName' = '__tokenName',
   'tokenPreview' = '__tokenPreview',
   'tokenValue' = '__tokenValue',
   'tokenAlias' = '__tokenAlias',
   'tokenDescription' = '__tokenDescription',
   "headerTitle" = "token.title.section",
-  "sectionHeader" = "Section Header"
+  "sectionHeader" = "_Section Header"
 }
+
 
 export type Token = {
   name: string
@@ -43,7 +45,8 @@ class TokenSection {
     if (!tokenPage) {
       throw new Error('Can not find Design Tokens page')
     }
-    const tokenTemplate = tokenPage?.children.find(node => node.name === layerNames.sectionHeader) as ComponentNode
+    const localComponentsLayer = tokenPage?.children.find(node => node.name === layerNames.localComponents) as FrameNode
+    const tokenTemplate = localComponentsLayer?.children.find(node => node.name === layerNames.sectionHeader) as ComponentNode
     if (!tokenTemplate) {
       throw new Error('Can not find Design Token Template')
     }
@@ -107,7 +110,9 @@ class TokenItem {
     if (!tokenPage) {
       throw new Error('Can not find Design Tokens page')
     }
-    const tokenTemplate = tokenPage?.children.find(node => node.name === layerNames.templateDesignToken) as ComponentNode
+
+    const localComponentsLayer = tokenPage?.children.find(node => node.name === layerNames.localComponents) as FrameNode
+    const tokenTemplate = localComponentsLayer?.children.find(node => node.name === layerNames.templateDesignToken) as ComponentNode
     if (!tokenTemplate) {
       throw new Error('Can not find Design Token Template')
     }
