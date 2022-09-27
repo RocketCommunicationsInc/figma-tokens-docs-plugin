@@ -187,38 +187,15 @@ class TokenItem {
 
 }
 
-// class TextTokenItem extends TokenItem {
-//   name = ''
-//   token: Token
-//   _node?: InstanceNode
-
-//   constructor(token: Token) {
-//     super(token)
-//     this.name = token.name
-//     this.token = token
-//   }
-
-//   fetchTemplate() {
-//     const tokenPage = figma.root.children.find(node => node.name === 'Design Tokens')
-//     if (!tokenPage) {
-//       throw new Error('Can not find Design Tokens page')
-//     }
-//     const tokenTemplate = tokenPage?.children.find(node => node.name === "Font Template") as ComponentNode
-//     if (!tokenTemplate) {
-//       throw new Error('Can not find Design Token Template')
-//     }
-//     // If template is a Component
-//     this._node = tokenTemplate.createInstance()
-//     this._node.name = this.name
-//   }
-
-// }
-
 
 figma.ui.onmessage = async (msg) => {
   await loadFonts()
   if (msg.type === "create-docs") {
-    const pluginData = JSON.parse(figma.root.getSharedPluginData("tokens", "values")).beta
+    //@TODO make sets configurable by user.
+    const refData = JSON.parse(figma.root.getSharedPluginData("tokens", "values")).reference
+    const sysData = JSON.parse(figma.root.getSharedPluginData("tokens", "values")).system
+    const compData = JSON.parse(figma.root.getSharedPluginData("tokens", "values")).components
+    const pluginData = [...refData, ...sysData, ...compData]
 
     const frame = figma.createFrame()
     frame.name = "Color Design Tokens"
@@ -237,14 +214,6 @@ figma.ui.onmessage = async (msg) => {
         frame.appendChild(tokenSection.frame)
       }
     })
-
-    // const palettes = pluginData.beta.filter((token: Token) => token.name.includes('color.palette'))
-    // const section = new TokenSection('Color Palettes', palettes)
-    // section.create()
-
-    // const status = pluginData.filter((token: Token) => token.name.includes('color.status'))
-    // const statusSection = new TokenSection('Status Colors', status)
-    // statusSection.create()
 
   }
 
