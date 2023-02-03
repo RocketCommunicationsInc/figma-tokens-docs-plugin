@@ -94,33 +94,41 @@ function App(props) {
       tokenPrefix: 'color.classification'
     },
     {
-      name: 'Popup Menu',
-      tokenPrefix: 'popup-menu'
-    },
-    {
       name: 'Card',
-      tokenPrefix: 'card'
+      tokenPrefix: 'card.color'
     },
     {
       name: 'Container',
-      tokenPrefix: 'container'
+      tokenPrefix: 'container.color'
     },
     {
       name: 'Classification Banner',
-      tokenPrefix: 'classification-banner'
-    },
-    {
-      name: 'Status Symbol',
-      tokenPrefix: 'status-symbol'
+      tokenPrefix: 'classification-banner.color'
     },
     {
       name: 'Global Status Bar',
-      tokenPrefix: 'gsb'
+      tokenPrefix: 'gsb.color'
+    },
+    {
+      name: 'Logs',
+      tokenPrefix: 'log.color'
+    },
+    {
+      name: 'Monitoring Icon',
+      tokenPrefix: 'monitoring-icon.badge.color'
     },
     {
       name: 'Notification Banner',
-      tokenPrefix: 'notification-banner'
-    }
+      tokenPrefix: 'notification-banner.color'
+    },
+    {
+      name: 'Popup Menu',
+      tokenPrefix: 'popup-menu.color'
+    },
+    {
+      name: 'Status Symbol',
+      tokenPrefix: 'status-symbol.color'
+    },
   ])
 
   const onCreate = () => {
